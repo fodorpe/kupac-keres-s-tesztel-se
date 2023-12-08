@@ -166,14 +166,25 @@ bool Jo_e(kupac k, int n, int min, int max) {
 	int a = k.search(randomelem);
 	int b;
 
-	int i = 0;
-	while (i < k.t.size() && k.t[i] != randomelem)
+	if (a != -1 && k.t[a] != randomelem)
 	{
-		i++;
+		cout << "hiba:" << n << endl;
+		cout << "randomelem:" << randomelem << endl;
+		cout << "a:" << a << endl;
 	}
-	i == k.t.size() ? b = -1 : b = i;
+	else if (a == -1) {
+		/**/
+		int i = 0;
+		while (i < k.t.size() && k.t[i] != randomelem)
+		{
+			i++;
+		}
+		i == k.t.size() ? b = -1 : b = i;
+		/**/
+		return a == b;
+	}
 
-	return a == b;
+	return k.t[a] == randomelem;
 }
 
 int teszt(int n, int m, int min, int max) {
